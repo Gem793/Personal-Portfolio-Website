@@ -252,7 +252,7 @@ a {
 /* Scroll Indicator */
 .scroll-indicator {
     position: absolute;
-    bottom: 60px;
+    bottom: 120px;
     left: 80px;
     display: flex;
     align-items: center;
@@ -304,23 +304,107 @@ a {
 /* ===== ABOUT SECTION ===== */
 .about-section {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
     background: #ebe8fb;
 }
 
 .about-content {
-    width: 100%;
-    max-width: 900px;
-    padding: 80px 40px;
+    position: absolute;
+    left: 160px;
+    top: 30%;
+    transform: translateY(-50%);
+    z-index: 1;
 }
+
+.about-card {
+    background: transparent;
+    border: 1.5px dashed rgba(92, 26, 26, 0.45);
+    border-radius: 20px;
+    padding: 28px 36px;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.about-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #5c1a1a;
+    margin: 0;
+    line-height: 1;
+}
+
+.about-location {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: #7a5c5c;
+    margin: 0;
+}
+
+.location-icon {
+    flex-shrink: 0;
+    color: #5c1a1a;
+}
+
+/* ===== ABOUT ANIMATION ===== */
+.about-animation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(580px, 80vw);
+    /* 4-edge soft gradient fade — tighter stops to crop out the image grey border */
+    -webkit-mask-image:
+        linear-gradient(to bottom, transparent 0%, black 22%, black 78%, transparent 100%),
+        linear-gradient(to right, transparent 0%, black 22%, black 78%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+        linear-gradient(to bottom, transparent 0%, black 22%, black 78%, transparent 100%),
+        linear-gradient(to right, transparent 0%, black 22%, black 78%, transparent 100%);
+    mask-composite: intersect;
+}
+
+.about-animation-inner {
+    width: 100%;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background: transparent;
+}
+
+.about-animation-inner img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    mix-blend-mode: multiply;
+}
+
 
 /* ===== PROJECTS SECTION ===== */
 .projects-section {
     position: relative;
-    height: 280vh;
-    /* Scroll region — cards peel more slowly */
+    height: 380vh;
+    /* Scroll region — slower card peel */
     background: #ebe8fb;
+}
+
+.projects-heading {
+    font-family: 'Caveat', cursive;
+    font-size: 2.4rem;
+    font-weight: 600;
+    font-style: italic;
+    color: #5c1a1a;
+    text-align: center;
 }
 
 /* Locks the card stack on screen while parent scrolls */
@@ -331,8 +415,10 @@ a {
     width: 100%;
     overflow: hidden;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 16px;
 }
 
 /* Positioning context for the stacked cards */
@@ -432,13 +518,57 @@ a {
     background: #ebe8fb;
 }
 
+/* Two-column row: text left, animation right */
+.contact-inner {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 60px 80px 20px 120px;
+}
+
 .contact-content {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 120px 80px 40px 120px;
 }
+
+/* ===== CONTACT ANIMATION ===== */
+.contact-animation {
+    flex: 0 0 auto;
+    width: min(460px, 48vw);
+    transform: translateX(-120px);
+    /* 4-edge soft gradient fade */
+    -webkit-mask-image:
+        linear-gradient(to bottom, transparent 0%, black 14%, black 86%, transparent 100%),
+        linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+        linear-gradient(to bottom, transparent 0%, black 14%, black 86%, transparent 100%),
+        linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    mask-composite: intersect;
+}
+
+.contact-animation-inner {
+    width: 100%;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background: transparent;
+}
+
+.contact-animation-inner img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    mix-blend-mode: multiply;
+}
+
 
 .contact-heading {
     font-family: 'Caveat', cursive;

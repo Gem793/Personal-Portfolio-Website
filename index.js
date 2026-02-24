@@ -145,6 +145,47 @@ if (musicToggle) {
     }, interval);
 })();
 
+// ===== ABOUT FRAME ANIMATION =====
+(function () {
+    const totalFrames = 40;
+    const fps = 18;
+    const interval = 1000 / fps;
+    const img = document.getElementById('aboutAnimFrame');
+    if (!img) return;
+
+    const frames = Array.from({ length: totalFrames }, (_, i) => {
+        const n = String(i).padStart(3, '0');
+        return `ABOUT_000/about_f_${n}.jpg`;
+    });
+
+    let currentFrame = 0;
+    setInterval(() => {
+        currentFrame = (currentFrame + 1) % totalFrames;
+        img.src = frames[currentFrame];
+    }, interval);
+})();
+
+// ===== CONTACT FRAME ANIMATION =====
+(function () {
+    const totalFrames = 45;
+    const fps = 12;
+    const interval = 1000 / fps;
+    const img = document.getElementById('contactAnimFrame');
+    if (!img) return;
+
+    const frames = Array.from({ length: totalFrames }, (_, i) => {
+        const n = String(i).padStart(3, '0');
+        return `hi_000/hi_${n}.jpg`;
+    });
+
+    let currentFrame = 0;
+    setInterval(() => {
+        currentFrame = (currentFrame + 1) % totalFrames;
+        img.src = frames[currentFrame];
+    }, interval);
+})();
+
+
 // ===== SMOOTH SCROLL FOR NAV LINKS =====
 navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
@@ -171,8 +212,13 @@ navLinks.forEach(link => {
         const rect = section.getBoundingClientRect();
         // scrolled = how many px we've moved into the section (0 at section top, positive going down)
         const scrolled = -rect.top;
-        // totalScroll = how many px the section scrolls while sticky (400vh - 100vh = 300vh)
+        // totalScroll = how many px the section scrolls while sticky
         const totalScroll = rect.height - window.innerHeight;
+
+        // Settle phase: cards sit still for the first 20% of scroll before peeling starts
+        const settleOffset = totalScroll * 0.20;
+        const peelScroll = totalScroll - settleOffset;
+        const peelProgress = Math.max(0, scrolled - settleOffset);
 
         cards.forEach((card, i) => {
             // Last card stays fixed — never peels away
@@ -184,10 +230,10 @@ navLinks.forEach(link => {
                 return;
             }
 
-            // Each card occupies an equal share of the scroll range
-            const segStart = (i / (N - 1)) * totalScroll;
-            const segEnd = ((i + 1) / (N - 1)) * totalScroll;
-            const p = Math.min(1, Math.max(0, (scrolled - segStart) / (segEnd - segStart)));
+            // Each card occupies an equal share of the peel scroll range
+            const segStart = (i / (N - 1)) * peelScroll;
+            const segEnd = ((i + 1) / (N - 1)) * peelScroll;
+            const p = Math.min(1, Math.max(0, (peelProgress - segStart) / (segEnd - segStart)));
 
             // Base peek offset (from CSS --card-i, mirrored here for accuracy)
             const peekY = i * 6;
