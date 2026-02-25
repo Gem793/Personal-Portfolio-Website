@@ -1,7 +1,35 @@
 // ===== SCROLL-BASED NAV HIGHLIGHTING =====
 document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('.section');
+    // ===== HAMBURGER MENU =====
+    const hamburger = document.getElementById('hamburger');
+    const navLeft = document.getElementById('navLeft');
     const navLinks = document.querySelectorAll('.nav-link');
+
+    if (hamburger && navLeft) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLeft.classList.toggle('active');
+        });
+
+        // Close dropdown when a link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLeft.classList.remove('active');
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navLeft.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navLeft.classList.remove('active');
+            }
+        });
+    }
+
+    const sections = document.querySelectorAll('.section');
+    const navLinksForObserver = document.querySelectorAll('.nav-link');
 
     const observerOptions = {
         root: null,
@@ -13,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const sectionId = entry.target.id;
-                navLinks.forEach(link => {
+                navLinksForObserver.forEach(link => {
                     link.classList.toggle('active', link.dataset.section === sectionId);
                 });
             }

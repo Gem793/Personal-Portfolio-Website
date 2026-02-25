@@ -30,7 +30,7 @@ a {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
+    z-index: 100;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -76,6 +76,40 @@ a {
 
 .nav-link:hover {
     border-bottom-color: #5c1a1a88;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    gap: 5px;
+    z-index: 1001;
+    position: relative;
+}
+
+.hamburger span {
+    width: 24px;
+    height: 2px;
+    background: #5c1a1a;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+    display: block;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(12px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-12px);
 }
 
 .nav-right {
@@ -1089,15 +1123,38 @@ a {
     #navbar {
         padding: 12px 14px;
         gap: 12px;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+
+    .hamburger {
+        display: flex !important;
+        order: -1;
+        z-index: 1001;
+        position: relative;
     }
 
     .nav-left {
-        gap: 12px;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100vw;
+        flex-direction: column;
+        background: rgba(235, 232, 251, 0.98);
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(92, 26, 26, 0.1);
+        z-index: 999;
+        gap: 0;
+        display: none;
+    }
+
+    .nav-left.active {
+        display: flex;
     }
 
     .nav-link {
-        font-size: 0.75rem;
-        padding-bottom: 1px;
+        padding: 12px 14px;
+        border-bottom: 1px solid rgba(92, 26, 26, 0.05);
     }
 
     .nav-right {
@@ -1105,7 +1162,32 @@ a {
     }
 
     .music-toggle {
-        display: none;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        background: rgba(92, 26, 26, 0.1);
+        border-radius: 50%;
+        cursor: pointer;
+        padding: 0;
+        font-size: 1.2rem;
+    }
+
+    .music-toggle::before {
+        content: '♪';
+        color: #5c1a1a;
+        font-size: 1.1rem;
+    }
+
+    .music-label,
+    .music-state,
+    .toggle-track {
+        display: none !important;
+    }
+
+    .music-toggle.on {
+        background: rgba(92, 26, 26, 0.25);
     }
 
     .btn-get-in-touch {
@@ -1361,19 +1443,73 @@ a {
 
     #navbar {
         padding: 10px 12px;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+
+    .hamburger {
+        display: flex !important;
+        order: -1;
+        z-index: 1001;
+        position: relative;
     }
 
     .nav-left {
-        gap: 10px;
+        position: fixed;
+        top: 52px;
+        left: 0;
+        width: 100vw;
+        flex-direction: column;
+        background: rgba(235, 232, 251, 0.98);
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(92, 26, 26, 0.1);
+        z-index: 999;
+        gap: 0;
+        display: none;
+    }
+
+    .nav-left.active {
+        display: flex;
     }
 
     .nav-link {
+        padding: 10px 14px;
+        border-bottom: 1px solid rgba(92, 26, 26, 0.05);
         font-size: 0.7rem;
     }
 
     .btn-get-in-touch {
         padding: 7px 12px;
         font-size: 0.7rem;
+    }
+
+    .music-toggle {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        background: rgba(92, 26, 26, 0.1);
+        border-radius: 50%;
+        cursor: pointer;
+        padding: 0;
+        gap: 0;
+    }
+
+    .music-toggle::before {
+        content: '♪';
+        color: #5c1a1a;
+        font-size: 0.9rem;
+    }
+
+    .music-label,
+    .music-state,
+    .toggle-track {
+        display: none !important;
+    }
+
+    .music-toggle.on {
+        background: rgba(92, 26, 26, 0.25);
     }
 
     .hero-section {
