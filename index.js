@@ -87,66 +87,47 @@ document.addEventListener('DOMContentLoaded', () => {
     ytScript.src = 'https://www.youtube.com/iframe_api';
     document.head.appendChild(ytScript);
 
-    // ===== HERO FRAME ANIMATION =====
-    (function () {
-        const totalFrames = 154;
-        const fps = 12;           // frames per second
-        const interval = 1000 / fps;
-        const img = document.getElementById('heroAnimFrame');
+    // ===== FRAME-BY-FRAME ANIMATIONS =====
+    function playFrameAnimation(imgId, folder, prefix, totalFrames, fps) {
+        const img = document.getElementById(imgId);
         if (!img) return;
 
-        // Pre-build the list of frame paths
-        const frames = Array.from({ length: totalFrames }, (_, i) => {
-            const n = String(i).padStart(3, '0');
-            return `hero_imgs/sr_2 2_${n}.jpg`;
-        });
-
-        let currentFrame = 0;
-        setInterval(() => {
-            currentFrame = (currentFrame + 1) % totalFrames;
-            img.src = frames[currentFrame];
-        }, interval);
-    })();
-
-    // ===== ABOUT FRAME ANIMATION =====
-    (function () {
-        const totalFrames = 40;
-        const fps = 18;
         const interval = 1000 / fps;
-        const img = document.getElementById('aboutAnimFrame');
-        if (!img) return;
 
-        const frames = Array.from({ length: totalFrames }, (_, i) => {
+        // Pre-build paths and preload Image objects so the browser
+        // doesn't abort network requests when swapping src rapidly.
+        const imageObjects = [];
+        for (let i = 0; i < totalFrames; i++) {
             const n = String(i).padStart(3, '0');
-            return `ABOUT_000/about_f_${n}.jpg`;
-        });
+            const src = `${folder}/${prefix}${n}.jpg`;
+            const imageObj = new Image();
+            imageObj.src = src;
+            imageObjects.push(imageObj);
+        }
 
         let currentFrame = 0;
-        setInterval(() => {
-            currentFrame = (currentFrame + 1) % totalFrames;
-            img.src = frames[currentFrame];
-        }, interval);
-    })();
+        let lastTime = performance.now();
 
-    // ===== CONTACT FRAME ANIMATION =====
-    (function () {
-        const totalFrames = 45;
-        const fps = 12;
-        const interval = 1000 / fps;
-        const img = document.getElementById('contactAnimFrame');
-        if (!img) return;
+        function animate(currentTime) {
+            requestAnimationFrame(animate);
+            if (currentTime - lastTime >= interval) {
+                const nextFrame = (currentFrame + 1) % totalFrames;
+                // Only advance the frame if the next image has finished downloading
+                if (imageObjects[nextFrame].complete) {
+                    currentFrame = nextFrame;
+                    img.src = imageObjects[currentFrame].src;
+                    lastTime = currentTime;
+                }
+            }
+        }
 
-        const frames = Array.from({ length: totalFrames }, (_, i) => {
-            const n = String(i).padStart(3, '0');
-            return `hi_000/hi_${n}.jpg`;
-        });
+        requestAnimationFrame(animate);
+    }
 
-        let currentFrame = 0;
-        setInterval(() => {
-            currentFrame = (currentFrame + 1) % totalFrames;
-            img.src = frames[currentFrame];
-        }, interval);
-    })();
+    // Initialize the three animations
+    playFrameAnimation('heroAnimFrame', 'hero_imgs', 'sr_2 2_', 154, 12);
+    playFrameAnimation('aboutAnimFrame', 'ABOUT_000', 'about_f_', 40, 18);
+    playFrameAnimation('contactAnimFrame', 'hi_000', 'hi_', 45, 12);
 
 
     // ===== SMOOTH SCROLL FOR NAV LINKS =====
