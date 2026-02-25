@@ -87,47 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ytScript.src = 'https://www.youtube.com/iframe_api';
     document.head.appendChild(ytScript);
 
-    // ===== FRAME-BY-FRAME ANIMATIONS =====
-    function playFrameAnimation(imgId, folder, prefix, totalFrames, fps) {
-        const img = document.getElementById(imgId);
-        if (!img) return;
-
-        const interval = 1000 / fps;
-
-        // Pre-build paths and preload Image objects so the browser
-        // doesn't abort network requests when swapping src rapidly.
-        const imageObjects = [];
-        for (let i = 0; i < totalFrames; i++) {
-            const n = String(i).padStart(3, '0');
-            const src = `${folder}/${prefix}${n}.jpg`;
-            const imageObj = new Image();
-            imageObj.src = src;
-            imageObjects.push(imageObj);
-        }
-
-        let currentFrame = 0;
-        let lastTime = performance.now();
-
-        function animate(currentTime) {
-            requestAnimationFrame(animate);
-            if (currentTime - lastTime >= interval) {
-                const nextFrame = (currentFrame + 1) % totalFrames;
-                // Only advance the frame if the next image has finished downloading
-                if (imageObjects[nextFrame].complete) {
-                    currentFrame = nextFrame;
-                    img.src = imageObjects[currentFrame].src;
-                    lastTime = currentTime;
-                }
-            }
-        }
-
-        requestAnimationFrame(animate);
-    }
-
-    // Initialize the three animations
-    playFrameAnimation('heroAnimFrame', 'hero_imgs', 'sr_2 2_', 154, 12);
-    playFrameAnimation('aboutAnimFrame', 'ABOUT_000', 'about_f_', 40, 18);
-    playFrameAnimation('contactAnimFrame', 'hi_000', 'hi_', 45, 12);
+    // Frame animations have been replaced by native MP4 <video> tags.
 
 
     // ===== SMOOTH SCROLL FOR NAV LINKS =====

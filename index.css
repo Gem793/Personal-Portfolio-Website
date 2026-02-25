@@ -226,7 +226,7 @@ a {
     outline: none;
 }
 
-.hero-animation-inner img {
+.hero-animation-inner video {
     width: 100%;
     height: auto;
     object-fit: contain;
@@ -384,7 +384,7 @@ a {
     background: transparent;
 }
 
-.about-animation-inner img {
+.about-animation-inner video {
     width: 100%;
     height: auto;
     display: block;
@@ -643,7 +643,7 @@ a {
     background: transparent;
 }
 
-.contact-animation-inner img {
+.contact-animation-inner video {
     width: 100%;
     height: auto;
     display: block;
