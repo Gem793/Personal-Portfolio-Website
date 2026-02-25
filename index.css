@@ -723,7 +723,66 @@ a {
 }
 
 /* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    #navbar {
+        padding: 16px 30px;
+    }
+
+    .nav-left {
+        gap: 24px;
+    }
+
+    .nav-right {
+        gap: 16px;
+    }
+
+    .hero-section {
+        padding: 120px 60px 80px 60px;
+    }
+
+    .hero-animation {
+        max-width: 350px;
+    }
+
+    .about-content {
+        left: 60px;
+    }
+
+    .about-card-bio {
+        left: 60px;
+        bottom: 30%;
+    }
+
+    .about-card-skills {
+        right: 60px;
+    }
+
+    .contact-inner {
+        padding: 60px 60px 20px 60px;
+        gap: 30px;
+    }
+
+    .scroll-indicator {
+        left: 60px;
+    }
+}
+
 @media (max-width: 900px) {
+    #navbar {
+        flex-wrap: wrap;
+        padding: 12px 20px;
+    }
+
+    .nav-left {
+        gap: 20px;
+        flex: 1;
+    }
+
+    .nav-right {
+        flex: 0 0 auto;
+        gap: 12px;
+    }
+
     .projects-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -732,11 +791,13 @@ a {
         flex-direction: column;
         align-items: flex-start;
         gap: 24px;
+        padding: 100px 45px 60px 45px;
     }
 
     .hero-animation {
         max-width: 100%;
         width: 100%;
+        max-width: 300px;
     }
 
     .hero-name {
@@ -747,14 +808,85 @@ a {
         font-size: 1.4rem;
     }
 
+    .about-section {
+        min-height: auto;
+        padding: 80px 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .about-content {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        margin-bottom: 0;
+        z-index: 10;
+    }
+
+    .about-animation {
+        width: min(500px, 90vw);
+        margin-bottom: 0;
+        z-index: 5;
+    }
+
+    .about-card {
+        width: 100%;
+        max-width: 420px;
+    }
+
+    .about-card-bio {
+        position: static !important;
+        bottom: auto !important;
+        left: auto !important;
+        margin-top: 0 !important;
+        margin-bottom: 15px !important;
+        z-index: 8;
+        width: 100%;
+        max-width: 420px;
+    }
+
+    .about-card-skills {
+        position: static !important;
+        right: auto !important;
+        top: auto !important;
+        transform: none !important;
+        margin-bottom: 0 !important;
+        z-index: 7;
+        width: 100%;
+        max-width: 420px;
+    }
+
     .contact-heading {
         font-size: 2.5rem;
     }
+
+    .contact-inner {
+        flex-direction: column;
+        padding: 60px 40px 20px 40px;
+        gap: 30px;
+    }
+
+    .contact-animation {
+        transform: translateX(0);
+        width: min(400px, 90vw);
+    }
+
+    .projects-section {
+        height: 320vh;
+    }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+    html {
+        font-size: 15px;
+    }
+
     #navbar {
-        padding: 14px 20px;
+        padding: 12px 16px;
+        gap: 8px;
     }
 
     .nav-left {
@@ -762,66 +894,652 @@ a {
     }
 
     .nav-link {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
+    }
+
+    .nav-right {
+        gap: 10px;
     }
 
     .music-toggle {
-        display: none;
+        padding: 4px 10px;
+        font-size: 0.7rem;
+    }
+
+    .btn-get-in-touch {
+        padding: 10px 16px;
+        font-size: 0.8rem;
     }
 
     .hero-section {
-        padding: 100px 30px 60px 30px;
-    }
-
-    .hero-animation {
-        display: none;
+        padding: 100px 30px 50px 30px;
+        gap: 20px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .hero-content {
         margin-left: 0;
     }
 
-    .hero-name {
-        font-size: 3rem;
+    .hero-greeting {
+        font-size: 1.8rem;
     }
 
-    .hero-greeting {
-        font-size: 1.6rem;
+    .hero-name {
+        font-size: 3.5rem;
     }
 
     .hero-subtitle {
         font-size: 1.2rem;
     }
 
+    .hero-animation {
+        max-width: 250px;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+    }
+
     .scroll-indicator {
         left: 30px;
-        bottom: 40px;
+        bottom: 30px;
+        gap: 10px;
+    }
+
+    .scroll-arrow-circle {
+        width: 40px;
+        height: 40px;
+    }
+
+    .scroll-text {
+        font-size: 0.65rem;
+    }
+
+    .projects-heading {
+        font-size: 1.8rem;
+        padding: 40px 20px 0 20px;
     }
 
     .projects-section {
-        padding: 100px 24px 60px 24px;
+        height: 350vh;
     }
 
-    .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+    .projects-sticky-wrapper {
+        gap: 12px;
+    }
+
+    .projects-stack {
+        width: min(85vw, 500px);
+        height: 45vh;
     }
 
     .project-card {
-        padding: 45px 20px;
+        padding: 28px 24px;
+        border-radius: 20px;
+    }
+
+    .project-title {
+        font-size: 2.4rem;
+    }
+
+    .project-desc {
+        font-size: 1.1rem;
     }
 
     .contact-heading {
         font-size: 2rem;
-        padding: 0;
     }
 
-    .contact-content {
-        padding: 100px 30px 30px 30px;
+    .contact-socials {
+        gap: 14px;
+    }
+
+    .social-btn {
+        width: 48px;
+        height: 48px;
+    }
+
+    .about-section {
+        min-height: auto;
+        padding: 60px 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .about-content {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        margin-bottom: 0;
+        z-index: 10;
+    }
+
+    .about-animation {
+        width: min(450px, 90vw);
+        margin-bottom: 0;
+        z-index: 5;
+    }
+
+    .about-card {
+        border-radius: 16px;
+        padding: 20px 24px;
+        width: 100%;
+        max-width: 380px;
+    }
+
+    .about-name {
+        font-size: 1.2rem;
+    }
+
+    .about-location {
+        font-size: 0.9rem;
+    }
+
+    .about-card-bio {
+        position: static !important;
+        bottom: auto !important;
+        left: auto !important;
+        transform: none !important;
+        margin-bottom: 15px !important;
+        z-index: 8;
+        width: 100%;
+        max-width: 380px;
+    }
+
+    .about-card-skills {
+        position: static !important;
+        right: auto !important;
+        top: auto !important;
+        transform: none !important;
+        margin-bottom: 0 !important;
+        z-index: 7;
+        width: 100%;
+        max-width: 380px;
+    }
+
+    .about-bio {
+        font-size: 1.05rem;
+        line-height: 1.6;
+    }
+
+    .skills-heading {
+        font-size: 1rem;
+    }
+
+    .skills-list li {
+        font-size: 0.85rem;
+    }
+
+    .footer {
+        padding: 20px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 600px) {
+    html {
+        font-size: 14px;
+    }
+
+    #navbar {
+        padding: 12px 14px;
+        gap: 12px;
+    }
+
+    .nav-left {
+        gap: 12px;
+    }
+
+    .nav-link {
+        font-size: 0.75rem;
+        padding-bottom: 1px;
+    }
+
+    .nav-right {
+        gap: 8px;
+    }
+
+    .music-toggle {
+        display: none;
     }
 
     .btn-get-in-touch {
-        padding: 10px 18px;
+        padding: 8px 14px;
+        font-size: 0.75rem;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        font-size: 14px;
+    }
+
+    .hero-section {
+        min-height: 85vh;
+        padding: 90px 20px 40px 20px;
+        gap: 15px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-animation {
+        max-width: 200px;
+        width: 100%;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-content {
+        margin-left: 0;
+        flex: 1;
+    }
+
+    .hero-greeting {
+        font-size: 1.6rem;
+        margin-bottom: -5px;
+        opacity: 1;
+    }
+
+    .hero-name {
+        font-size: 2.8rem;
+        line-height: 1;
+        color: #5c1a1a;
+    }
+
+    .hero-subtitle {
+        font-size: 1.15rem;
+        opacity: 1;
+    }
+
+    .scroll-indicator {
+        left: 20px;
+        bottom: 25px;
+        gap: 8px;
+    }
+
+    .scroll-arrow-circle {
+        width: 36px;
+        height: 36px;
+    }
+
+    .scroll-text {
+        font-size: 0.6rem;
+        line-height: 1.2;
+    }
+
+    .about-section {
+        min-height: auto;
+        padding: 50px 20px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .about-content {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        margin-bottom: 0;
+        z-index: 10;
+        flex-basis: 100%;
+        order: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .about-animation {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 0;
+        z-index: 5;
+        flex-basis: 100%;
+        order: 2;
+    }
+
+    .about-card {
+        border-radius: 12px;
+        padding: 16px 20px;
+        width: auto;
+        max-width: 240px;
+        display: flex;
+        flex-direction: column;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .about-name {
+        font-size: 1rem;
+    }
+
+    .about-location {
+        font-size: 0.85rem;
+    }
+
+    .about-card-bio {
+        position: static !important;
+        bottom: auto !important;
+        left: auto !important;
+        transform: none !important;
+        margin-bottom: 0 !important;
+        z-index: 8;
+        width: auto;
+        max-width: 240px;
+        display: block !important;
+        margin-top: 0 !important;
+        flex-basis: calc(50% - 10px);
+        order: 3;
+        min-height: 200px;
+    }
+
+    .about-card-skills {
+        position: static !important;
+        right: auto !important;
+        top: auto !important;
+        transform: none !important;
+        margin-bottom: 0 !important;
+        z-index: 7;
+        width: auto;
+        max-width: 240px;
+        display: block !important;
+        margin-top: 0 !important;
+        flex-basis: calc(50% - 10px);
+        order: 4;
+        min-height: 200px;
+    }
+
+    .about-bio {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+
+    .skills-heading {
+        font-size: 0.85rem;
+    }
+
+    .skills-list li {
+        font-size: 0.75rem;
+    }
+
+    .projects-heading {
+        font-size: 1.6rem;
+        padding: 30px 20px 0 20px;
+    }
+
+    .projects-section {
+        height: 400vh;
+        padding: 0;
+    }
+
+    .projects-sticky-wrapper {
+        gap: 10px;
+    }
+
+    .projects-stack {
+        width: 90vw;
+        max-width: 100%;
+        height: 50vh;
+    }
+
+    .project-card {
+        padding: 24px 20px;
+        border-radius: 16px;
+    }
+
+    .card-number {
+        font-size: 0.9rem;
+        margin-bottom: 12px;
+    }
+
+    .project-title {
+        font-size: 2.4rem;
+        margin-bottom: 8px;
+        color: #5c1a1a;
+    }
+
+    .project-desc {
+        font-size: 1.1rem;
+        opacity: 0.8;
+    }
+
+    .contact-section {
+        min-height: auto;
+        padding: 50px 0;
+    }
+
+    .contact-inner {
+        flex-direction: column;
+        padding: 40px 20px 20px 20px;
+        gap: 30px;
+    }
+
+    .contact-content {
+        padding: 0;
+    }
+
+    .contact-heading {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+    }
+
+    .contact-animation {
+        transform: translateX(0);
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .contact-socials {
+        gap: 12px;
+    }
+
+    .social-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
+    }
+
+    .footer {
+        padding: 16px;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 13px;
+    }
+
+    #navbar {
+        padding: 10px 12px;
+    }
+
+    .nav-left {
+        gap: 10px;
+    }
+
+    .nav-link {
+        font-size: 0.7rem;
+    }
+
+    .btn-get-in-touch {
+        padding: 7px 12px;
+        font-size: 0.7rem;
+    }
+
+    .hero-section {
+        min-height: 80vh;
+        padding: 80px 16px 35px 16px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-greeting {
+        font-size: 1.5rem;
+        opacity: 1;
+    }
+
+    .hero-name {
+        font-size: 2.6rem;
+        color: #5c1a1a;
+    }
+
+    .hero-subtitle {
+        font-size: 1.05rem;
+        opacity: 1;
+    }
+
+    .hero-animation {
+        max-width: 180px;
+        width: 100%;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .scroll-indicator {
+        left: 16px;
+    }
+
+    .hero-animation {
+        max-width: 180px;
+        width: 100%;
+        display: flex !important;
+    }
+
+    .about-section {
+        padding: 40px 16px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 16px;
+        width: 100%;
+    }
+
+    .about-content {
+        flex-basis: 100%;
+        order: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .about-animation {
+        flex-basis: 100%;
+        order: 2;
+    }
+
+    .about-card {
+        padding: 14px 16px;
+        width: auto;
+        max-width: 190px;
+        display: block !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    .about-name {
+        font-size: 0.95rem;
+    }
+
+    .about-card-bio {
+        width: auto;
+        max-width: 190px;
+        display: block !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        position: static !important;
+        bottom: auto !important;
+        left: auto !important;
+        transform: none !important;
+        flex-basis: calc(50% - 8px);
+        order: 3;
+        min-height: 180px;
+    }
+
+    .about-card-skills {
+        width: auto;
+        max-width: 190px;
+        display: block !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        position: static !important;
+        right: auto !important;
+        top: auto !important;
+        transform: none;
+        flex-basis: calc(50% - 8px);
+        order: 4;
+        min-height: 180px;
+    }
+
+    .about-bio {
         font-size: 0.8rem;
+        line-height: 1.4;
+    }
+
+    .skills-heading {
+        font-size: 0.8rem;
+    }
+
+    .skills-list li {
+        font-size: 0.75rem;
+    }
+
+    .projects-heading {
+        font-size: 1.5rem;
+        padding: 25px 16px 0 16px;
+    }
+
+    .projects-section {
+        height: 420vh;
+    }
+
+    .projects-stack {
+        width: 95vw;
+        height: 45vh;
+    }
+
+    .project-card {
+        padding: 20px 16px;
+    }
+
+    .project-title {
+        font-size: 2.2rem;
+        color: #5c1a1a;
+    }
+
+    .project-desc {
+        font-size: 1rem;
+        opacity: 0.8;
+    }
+
+    .contact-inner {
+        padding: 35px 16px 20px 16px;
+    }
+
+    .contact-heading {
+        font-size: 1.4rem;
+    }
+
+    .contact-animation {
+        max-width: 280px;
+    }
+
+    .social-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
     }
 }
