@@ -1124,6 +1124,7 @@ a {
         padding: 12px 14px;
         gap: 12px;
         flex-wrap: wrap;
+        position: relative;
         align-items: flex-start;
     }
 
@@ -1444,6 +1445,7 @@ a {
     #navbar {
         padding: 10px 12px;
         flex-wrap: wrap;
+        position: relative;
         align-items: flex-start;
     }
 
